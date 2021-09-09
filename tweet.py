@@ -14,6 +14,7 @@ auth = tw.OAuthHandler(KEY,SECRET)
 auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
 
 api = tw.API(auth)
+TW_MAX_CHARACTERS = 280
 
 def getTweetID (response):
     return response._json["id_str"]
@@ -30,4 +31,7 @@ def tweetLongTweet (text : str):
             prev_id = getTweetID(api.update_status(status=s,in_reply_to_status_id=prev_id)) 
 
 def tweet (text):
-    return api.update_status(text)
+    if len(text) > TW_MAX_CHARACTERS:
+        tweetLongTweet(text)
+    else:
+        api.update_status(text)
