@@ -1,8 +1,7 @@
 from phrase import getPhrase
-from tweet import tweet, tweetLongTweet
-from time import time,sleep
+from tweet import tweet
+from time import time
 from tweepy.error import TweepError
-from pprint import pprint
 
 #:)
 DAY_IN_SECONDS = 86400.0
